@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsupervised Speech in the Wild Challenge | Interspeech 2026</title>
+    <meta name="description" content="Unsupervised Speech in the Wild: Learning Robust Multilingual Representations from Unsupervised People's Speech - A challenge at Interspeech 2026">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>USW Challenge</h1>
+                    <span class="conference-badge">Interspeech 2026</span>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#overview">Overview</a></li>
+                        <li><a href="#tasks">Tasks</a></li>
+                        <li><a href="#data">Data</a></li>
+                        <li><a href="#timeline">Timeline</a></li>
+                        <li><a href="#submission">Submission</a></li>
+                        <li><a href="#organizers">Organizers</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-subtitle">Interspeech 2026 Challenge</p>
+                <h2 class="hero-title">Unsupervised Speech in the Wild</h2>
+                <p class="hero-description">Learning Robust Multilingual Representations from Unsupervised People's Speech</p>
+                <div class="hero-cta">
+                    <a href="#submission" class="btn btn-primary">Participate</a>
+                    <a href="https://huggingface.co/datasets/MLCommons/unsupervised_peoples_speech" class="btn btn-secondary" target="_blank" rel="noopener">Access Dataset</a>
+                </div>
+                <div class="hero-dates">
+                    <div class="date-item">
+                        <span class="date-label">Release & Baselines</span>
+                        <span class="date-value">Dec 12, 2025</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-label">Paper Deadline</span>
+                        <span class="date-value">Feb 25, 2026</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-label">Conference</span>
+                        <span class="date-value">Sep 27 – Oct 1, 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section id="overview" class="section">
+            <div class="container">
+                <h2 class="section-title">Overview</h2>
+                <div class="content-grid">
+                    <div class="content-main">
+                        <p class="lead">This challenge evaluates <strong>self-supervised speech representation learning</strong> on real-world heterogeneous audio at scale. Participants train models <strong>without transcripts</strong> using the <strong>Unsupervised People's Speech (UPS)</strong> dataset.</p>
+
+                        <p>Performance will be assessed via phonetic discrimination, low-resource ASR probes, multilingual language ID, and speaker clustering.</p>
+
+                        <h3>Significance</h3>
+                        <p>This challenge advances speech research by moving beyond curated corpora, emphasizing multilingual and accent diversity with realistic environments that include noise and music. By evaluating self-supervised models on spontaneous and heterogeneous audio, the challenge promotes scalable, inclusive representation learning aligned with the Interspeech 2026 theme <strong>"Speaking Together"</strong>, encouraging models that generalize across global voices and real-world scenarios.</p>
+                    </div>
+                    <aside class="content-sidebar">
+                        <div class="info-card">
+                            <h4>Key Highlights</h4>
+                            <ul>
+                                <li>Large-scale unsupervised training</li>
+                                <li>Real-world heterogeneous audio</li>
+                                <li>Multilingual & accent diversity</li>
+                                <li>Self-supervised learning focus</li>
+                                <li>Reproducible evaluation via Dynabench</li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section id="tasks" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Evaluation Tasks</h2>
+                <p class="section-intro">Submitted models will be evaluated on three primary metrics that reflect real-world speech understanding performance:</p>
+
+                <div class="task-grid">
+                    <div class="task-card">
+                        <div class="task-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                        </div>
+                        <h3>Few-Shot ASR</h3>
+                        <p>Evaluate automatic speech recognition accuracy with minimal labeled examples, testing the model's ability to rapidly adapt to new transcription tasks.</p>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        </div>
+                        <h3>Zero-Shot Language ID</h3>
+                        <p>Assess multilingual language identification without any language-specific training, measuring cross-lingual generalization.</p>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3>Speaker Clustering</h3>
+                        <p>Evaluate speaker representation quality through clustering metrics, testing the model's ability to distinguish individual speakers.</p>
+                    </div>
+                </div>
+
+                <div class="additional-criteria">
+                    <h3>Additional Considerations</h3>
+                    <p>Cross-accent robustness and computational efficiency will be included to ensure fairness and reproducibility. A leaderboard will rank submissions based on overall performance across these criteria.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="data" class="section">
+            <div class="container">
+                <h2 class="section-title">Dataset & Baselines</h2>
+
+                <div class="data-content">
+                    <div class="dataset-info">
+                        <h3>Unsupervised People's Speech (UPS)</h3>
+                        <p>The UPS dataset is publicly available via Hugging Face, enabling immediate and open access for participants. Challenge participants will be provided with:</p>
+                        <ul>
+                            <li><strong>Official dataloaders</strong> designed for efficient streaming and large-scale training</li>
+                            <li><strong>Precomputed language identification indices</strong> generated using Whisper 3.0, offering lightweight language guidance without explicit supervised labels</li>
+                            <li><strong>Designated unlabeled training subsets</strong> with held-out multilingual labeled evaluation sets</li>
+                        </ul>
+                        <a href="https://huggingface.co/datasets/MLCommons/unsupervised_peoples_speech" class="btn btn-primary" target="_blank" rel="noopener">Access on Hugging Face</a>
+                    </div>
+
+                    <div class="baselines-info">
+                        <h3>Baseline Systems</h3>
+                        <p>The following baseline systems will be provided to establish performance references:</p>
+                        <div class="baseline-list">
+                            <div class="baseline-item">
+                                <span class="baseline-name">wav2vec 2.0</span>
+                                <span class="baseline-status coming-soon">Coming Soon</span>
+                            </div>
+                            <div class="baseline-item">
+                                <span class="baseline-name">HuBERT</span>
+                                <span class="baseline-status coming-soon">Coming Soon</span>
+                            </div>
+                            <div class="baseline-item">
+                                <span class="baseline-name">XLSR</span>
+                                <span class="baseline-status coming-soon">Coming Soon</span>
+                            </div>
+                            <div class="baseline-item">
+                                <span class="baseline-name">Whisper Encoder</span>
+                                <span class="baseline-status coming-soon">Coming Soon</span>
+                            </div>
+                        </div>
+                        <p class="baseline-note">Baselines will be released on December 12, 2025.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rules" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Rules for Participation</h2>
+
+                <div class="rules-grid">
+                    <div class="rule-card">
+                        <h4>Training Data</h4>
+                        <p>Participants must train exclusively on the Unsupervised People's Speech dataset, without the use of transcripts or supervised external data.</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4>Compute Requirements</h4>
+                        <p>All models must be capable of running inference on a <strong>single A100 GPU at most</strong> to ensure reproducibility.</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4>Submission Platform</h4>
+                        <p>All submissions will be made through the <strong>Dynabench platform</strong> and evaluated under controlled conditions.</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4>Transparency</h4>
+                        <p>Full disclosure of training configuration, compute usage, and data preprocessing or filtering steps is required.</p>
+                    </div>
+                </div>
+
+                <div class="tracks-info">
+                    <h3>Competition Tracks</h3>
+                    <div class="tracks-grid">
+                        <div class="track-card">
+                            <h4>Main Track</h4>
+                            <p>Train on the full UPS dataset without additional filtering or curation.</p>
+                        </div>
+                        <div class="track-card">
+                            <h4>Open Filtering Sub-Track</h4>
+                            <p>Participants may apply custom data filtering or selection strategies on the UPS dataset.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="section">
+            <div class="container">
+                <h2 class="section-title">Important Dates</h2>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <span class="month">Dec</span>
+                            <span class="day">12</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Release & Baselines</h4>
+                            <p>Official dataset release, dataloaders, and baseline models available</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <span class="month">Feb</span>
+                            <span class="day">25</span>
+                            <span class="year">2026</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Paper Submission Deadline</h4>
+                            <p>Submit your challenge paper describing methods and results</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <span class="month">Mar</span>
+                            <span class="day">4</span>
+                            <span class="year">2026</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Paper Update Deadline</h4>
+                            <p>Final updates to submitted papers</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <span class="month">Apr 24</span>
+                            <span class="day">–</span>
+                            <span class="year">May 1</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Rebuttal Period</h4>
+                            <p>Respond to reviewer feedback</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <span class="month">Jun</span>
+                            <span class="day">5</span>
+                            <span class="year">2026</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Paper Acceptance Notification</h4>
+                            <p>Authors notified of acceptance decisions</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <span class="month">Jun</span>
+                            <span class="day">19</span>
+                            <span class="year">2026</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Camera-Ready Submission</h4>
+                            <p>Final paper submission deadline</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item highlight">
+                        <div class="timeline-date">
+                            <span class="month">Sep 27</span>
+                            <span class="day">–</span>
+                            <span class="year">Oct 1</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Interspeech 2026</h4>
+                            <p>Conference and challenge presentations (Tutorial Day: Sep 27)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="submission" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">How to Participate</h2>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h4>Download the Data</h4>
+                        <p>Access the UPS dataset from Hugging Face and set up your training environment using the provided dataloaders.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h4>Train Your Model</h4>
+                        <p>Develop your self-supervised speech representation model using only the UPS training data without transcripts.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h4>Submit via Dynabench</h4>
+                        <p>Upload your trained model to Dynabench for automated evaluation on the held-out test sets.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h4>Write Your Paper</h4>
+                        <p>Document your approach, experiments, and results following the Interspeech paper format.</p>
+                    </div>
+                </div>
+
+                <div class="submission-cta">
+                    <p>Submissions open December 12, 2025</p>
+                    <a href="#" class="btn btn-primary btn-disabled">Dynabench Submission (Coming Soon)</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="ethics" class="section">
+            <div class="container">
+                <h2 class="section-title">Ethics & Conduct</h2>
+                <div class="ethics-content">
+                    <p>All participants must adhere to the <a href="https://www.isca-speech.org/iscaweb/index.php/isca-code-of-conduct" target="_blank" rel="noopener">ISCA Code of Conduct</a>, ensuring professional behavior, respect for community standards, and the responsible advancement of speech research.</p>
+
+                    <div class="ethics-points">
+                        <div class="ethics-point">
+                            <h4>Data Ethics</h4>
+                            <p>The challenge data is drawn from legally shareable subsets of the UPS dataset, with appropriate ethics documentation and approvals in place.</p>
+                        </div>
+                        <div class="ethics-point">
+                            <h4>Privacy Protection</h4>
+                            <p>Participants are strictly prohibited from attempting to identify speakers or infer sensitive personal attributes.</p>
+                        </div>
+                        <div class="ethics-point">
+                            <h4>Responsible AI</h4>
+                            <p>All submissions must reflect responsible AI development practices, promoting fairness, transparency, and equitable multilingual speech technology.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="organizers" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Organizers</h2>
+
+                <div class="organizers-grid">
+                    <div class="organizer-card">
+                        <div class="organizer-photo">
+                            <img src="images/organizers/placeholder.svg" alt="Rafael Mosquera-Gómez" loading="lazy">
+                        </div>
+                        <div class="organizer-info">
+                            <h4>Rafael Mosquera-Gómez</h4>
+                            <p class="affiliation">MLCommons / Factored AI</p>
+                            <p class="bio">Machine Learning Engineer leading projects at the intersection of AI systems and real-world impact. Core contributor to the MLCommons Datasets Working Group. Co-author of NeurIPS 2024 top paper award winner: The PRISM Alignment Dataset.</p>
+                            <a href="mailto:rafael.mosquera@mlcommons.org" class="organizer-email">rafael.mosquera@mlcommons.org</a>
+                        </div>
+                    </div>
+
+                    <div class="organizer-card">
+                        <div class="organizer-photo">
+                            <img src="images/organizers/placeholder.svg" alt="Sarah Luger" loading="lazy">
+                        </div>
+                        <div class="organizer-info">
+                            <h4>Dr. Sarah Luger</h4>
+                            <p class="affiliation">MLCommons / iMerit</p>
+                            <p class="bio">Expert in AI and NLP with over two decades of experience. Leads the Generative AI Research group at iMerit and co-chairs the MLCommons Datasets Working Group. PhD from University of Edinburgh, former IBM Watson contributor.</p>
+                            <a href="mailto:sarahluger@gmail.com" class="organizer-email">sarahluger@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="organizer-card">
+                        <div class="organizer-photo">
+                            <img src="images/organizers/placeholder.svg" alt="Juan Felipe Rodríguez" loading="lazy">
+                        </div>
+                        <div class="organizer-info">
+                            <h4>Juan Felipe Rodríguez</h4>
+                            <p class="affiliation">Factored AI</p>
+                            <p class="bio">Machine Learning Engineer specializing in AI systems for education and talent mobility. Background in computational fluid dynamics and robotics, building large-scale applications powered by modern language models.</p>
+                            <a href="mailto:juan.rodriguez@factored.ai" class="organizer-email">juan.rodriguez@factored.ai</a>
+                        </div>
+                    </div>
+
+                    <div class="organizer-card">
+                        <div class="organizer-photo">
+                            <img src="images/organizers/placeholder.svg" alt="Daniel Galvez" loading="lazy">
+                        </div>
+                        <div class="organizer-info">
+                            <h4>Daniel Galvez</h4>
+                            <p class="affiliation">NVIDIA</p>
+                            <p class="bio">AI developer technology engineer working on accelerated speech recognition inference pipelines and toolkits including NeMo, ESPnet, and Kaldi. Previously at LinkedIn and Cornell University.</p>
+                            <a href="mailto:dt.galvez@nvidia.org" class="organizer-email">dt.galvez@nvidia.org</a>
+                        </div>
+                    </div>
+
+                    <div class="organizer-card">
+                        <div class="organizer-photo">
+                            <img src="images/organizers/placeholder.svg" alt="Sheriff Issaka" loading="lazy">
+                        </div>
+                        <div class="organizer-info">
+                            <h4>Sheriff Issaka</h4>
+                            <p class="affiliation">UCLA / All Lab</p>
+                            <p class="bio">PhD student researching bias, fairness, and low-resource language technologies at UCLA MARS Lab. Founder of the African Languages Lab (All Lab), advancing linguistic equity through open-source research.</p>
+                        </div>
+                    </div>
+
+                    <div class="organizer-card">
+                        <div class="organizer-photo">
+                            <img src="images/organizers/placeholder.svg" alt="Chiara Bonfanti" loading="lazy">
+                        </div>
+                        <div class="organizer-info">
+                            <h4>Chiara Bonfanti</h4>
+                            <p class="affiliation">Politecnico di Torino</p>
+                            <p class="bio">PhD researcher in NLP and Legal Informatics. Research focuses on semantic analysis and knowledge extraction from complex legal texts, bridging law and cybersecurity domains.</p>
+                        </div>
+                    </div>
+
+                    <div class="organizer-card">
+                        <div class="organizer-photo">
+                            <img src="images/organizers/placeholder.svg" alt="Chris Emezue" loading="lazy">
+                        </div>
+                        <div class="organizer-info">
+                            <h4>Chris Emezue</h4>
+                            <p class="affiliation">Mila / Lanfrica</p>
+                            <p class="bio">Researcher at Mila focused on NLP, causality, and reinforcement learning. Founder of Lanfrica Labs, a non-profit mapping AI in Africa to accelerate innovation and enable understanding of the continent's AI landscape.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Unsupervised Speech in the Wild Challenge</h3>
+                    <p>Part of Interspeech 2026 | September 27 – October 1, 2026</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="https://huggingface.co/datasets/MLCommons/unsupervised_peoples_speech" target="_blank" rel="noopener">UPS Dataset</a></li>
+                            <li><a href="#" target="_blank" rel="noopener">Dynabench</a></li>
+                            <li><a href="https://www.interspeech2026.org/" target="_blank" rel="noopener">Interspeech 2026</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://github.com/mlcommons" target="_blank" rel="noopener">GitHub</a></li>
+                            <li><a href="mailto:rafael.mosquera@mlcommons.org">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 USW Challenge Organizers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
