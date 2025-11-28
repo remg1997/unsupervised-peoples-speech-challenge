@@ -1,0 +1,13 @@
+# Private setup notes
+SETUP_NOTES.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
