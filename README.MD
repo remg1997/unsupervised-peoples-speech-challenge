@@ -17,7 +17,7 @@ Performance will be assessed via:
 
 | Date | Milestone |
 |------|-----------|
-| Dec 12, 2025 | Release & Baselines |
+| Dec 18, 2025 | Release & Baselines |
 | Feb 25, 2026 | Paper Submission Deadline |
 | Mar 4, 2026 | Paper Update Deadline |
 | Apr 24 – May 1, 2026 | Rebuttal Period |
